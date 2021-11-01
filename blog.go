@@ -86,16 +86,6 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
 	}
 }
 
-func fetchBlogPostTitles(){
-	files, err = ioutil.ReadDir(".")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	blogPostTitles = files
-}
-
 func main() {
 	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", makeHandler(editHandler))
